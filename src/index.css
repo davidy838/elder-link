@@ -23,7 +23,7 @@ h2 {
     color: rgb(255,255,255);
     text-transform: uppercase;
     font-size: 15px;
-    background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+    background: linear-gradient(45deg, rgb(48, 130, 254), rgb(64, 242, 255));
     padding: 12px 30px;
     border-radius: 30px;
     border: none;
@@ -60,7 +60,7 @@ nav {
 }
 
 nav .nav-button {
-    color: rgb(254, 48, 114);
+    color: rgb(48, 213, 254);
     background-color: rgb(255, 255, 255);
     font-size: 20px;
     padding: 10px 20px;
@@ -71,7 +71,7 @@ nav .nav-button {
 
 nav .nav-button:disabled {
     background-color: rgb(181, 180, 180);
-    color: rgb(189, 42, 90);
+    color: rgb(48, 219, 255);
 }
 
 nav .logo-container {
