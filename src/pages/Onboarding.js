@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 
 const OnBoarding = () => {
     const [formData, setFormData] = useState({
+        user_id: "",
         first_name: "",
         dob_day: "",
         dob_month: "",
@@ -116,11 +117,11 @@ const OnBoarding = () => {
                                 id="more-gender-identity"
                                 type="radio"
                                 name="gender_identity"
-                                value="more"
+                                value="other"
                                 onChange={handleChange}
-                                checked={formData.gender_identity === "more"}
+                                checked={formData.gender_identity === "other"}
                             />
-                            <label htmlFor="more-gender-identity">More</label>
+                            <label htmlFor="more-gender-identity">Other</label>
                         </div>
 
                         <label htmlFor="show-gender">Show Gender on my Profile</label>
