@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [user, setUser] = useState(null)
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
   const userId = cookies.UserId
+  const [genderedUsers, setGenderedUsers] = useState(null)
   const getUser = async () => {
     try {
         console.log('userId', userId)
@@ -18,20 +19,23 @@ const Dashboard = () => {
         setUser(response.data)
     } catch (error) {
         console.log(error)
+        }
     }
-}
-useEffect(() => {
-    getUser()
-}, []);
-if (user && user.url) {
-  console.log('user', user.url);
-}
-else {
-  console.log('none user');
+   const getGendereUsers = async() => {
+       try {
+        const response = await axios.get('http://localhost:8000/gendered-users', {
+           params: { gender: user?.gender_interest }
+       })
+         setGenderedUsers(response.data)
+      } catch (error) {
+        console.log(error)
+   }
+  }
 
-}
-console.log('user', user)
-
+    useEffect(() => {
+        getUser()
+        getGendereUsers
+    }, [user, genderedUsers]);
 
 
 
@@ -73,6 +77,8 @@ console.log('user', user)
       console.log(name + ' left the screen!')
     }
     return (
+      <>
+      {user && 
         <div className="dashboard">
             <ChatContainer user={user}/>
             <div className="swipe-container">
@@ -97,6 +103,6 @@ console.log('user', user)
 
             </div>
         </div>
-    );
+ }</>);
 }
 export default Dashboard;

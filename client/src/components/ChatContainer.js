@@ -4,6 +4,7 @@ import ChatDisplay from './ChatDisplay';
 
 const ChatContainer = ({user}) => {
     return (
+        console.log('user', user.url),
 
         <div className="chat-container">
             <ChatHeader user={user} /> 
