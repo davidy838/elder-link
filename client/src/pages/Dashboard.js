@@ -1,9 +1,45 @@
 import TinderCard from 'react-tinder-card'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ChatContainer from '../components/ChatContainer';
+import axios from 'axios'
+import { useCookies } from 'react-cookie'
 
 
 const Dashboard = () => {
+  const [user, setUser] = useState(null)
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
+  const userId = cookies.UserId
+  const getUser = async () => {
+    try {
+        console.log('userId', userId)
+        const response = await axios.get('http://localhost:8000/user', {
+            params: {userId }
+        })
+        setUser(response.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+useEffect(() => {
+    getUser()
+}, []);
+if (user && user.url) {
+  console.log('user', user.url);
+}
+else {
+  console.log('none user');
+
+}
+console.log('user', user)
+
+
+
+
+
+
+
+
+
     const characters = [
         {
           name: 'Richard Hendricks',
@@ -38,7 +74,7 @@ const Dashboard = () => {
     }
     return (
         <div className="dashboard">
-            <ChatContainer/>
+            <ChatContainer user={user}/>
             <div className="swipe-container">
                 <div className="card-container">
                     {characters.map((character) =>
