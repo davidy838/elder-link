@@ -21,18 +21,18 @@ const AuthModal = ({ setShowModal, isSignUp}) => {
         e.preventDefault()
         try {
                 if (isSignUp && (password !== confirmPassword)) {
-                     setError("Passwords do not match")
-                     return
+                    setError("Passwords do not match");
+                    return;
                 }
-                const response = await axios.post('http://localhost:8000/signup', {email, password})
+                const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, {email, password});
 
-
-                setCookie('Email', response.data.email)
+                setCookie('AuthToken', response.data.token);
                 setCookie('UserId', response.data.userId)
-                setCookie('AuthToken', response.data.token)
-                const success = response.status == 201
+                const success = response.status == 201;
 
-                if (success) navigate('/onboarding')
+                if (success && isSignUp) navigate('/onboarding');
+                if (success && !isSignUp) navigate('/dashboard');
+
 
 
         } catch (error) {
