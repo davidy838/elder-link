@@ -9,18 +9,26 @@ const Home = () => {
     const [isSignUp, setIsSignUp] = useState(true);
 
 
-    const authToken = false;
+    const authToken = cookies.authToken;
 
 
     const handleClick = () => {
+    if (authToken) {
+            removeCookie('AuthToken');
+            removeCookie('UserId');
+            window.location.reload();
+            return;
+        }
         console.log("clicked")
         setShowModal(true);
         setIsSignUp(true);
+
     }
 
     return (
         <div className="overlay">
-        <Nav minimal={false} 
+        <Nav authToken={authToken}
+             minimal={false} 
              setShowModal={setShowModal} 
              showModal = {showModal}
              setIsSignUp={setIsSignUp} />
