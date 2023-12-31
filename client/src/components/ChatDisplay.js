@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+
 import Chat from './Chat';
 import ChatInput from './ChatInput';
 import axios from 'axios';
@@ -54,7 +54,7 @@ const ChatDisplay = ( {user, clickedUser}) => {
         messages.push(formattedMessage)
     })
 
-    const descendingOrderMessages = messages?.sort((a, b) => a.timestamp.localCompare(b.timestamp))
+    const descendingOrderMessages =messages?.sort((a,b) => a.timestamp.localeCompare(b.timestamp))
 
 
 
