@@ -6,7 +6,8 @@ const { MongoClient } = require('mongodb');
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
-const uri = 'mongodb+srv://davidyang838:Goodluck1971@elder-link.bwbggxk.mongodb.net/elder-link?retryWrites=true&w=majority'
+require('dotenv').config()
+const uri = process.env.URI
 
 const app = express();
 app.use(cors())
