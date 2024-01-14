@@ -68,6 +68,7 @@ To run this project locally, follow these steps:
 - MongoDB
 - HTML/CSS
 - Node.js
+- PostgreSQL
 
 ## Contributing
 
